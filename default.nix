@@ -46,7 +46,10 @@ rustPlatform.buildRustPackage {
     cp -r pkg/* $out/pkg
   '';
 
-  nativeCheckInputs = [ nodejs ];
+  nativeCheckInputs = [
+    llvmPackages.clang
+    nodejs
+  ];
 
   checkPhase = ''
     RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld" cargo test
