@@ -4,6 +4,8 @@ version = "0.1.0"
 authors = ["Nathan Henrie <nate@n8henrie.com>"]
 edition = "2018"
 license = "MIT"
+description = "Experiment to convert icw.n8henrie.com to wasm"
+repository = "https://github.com/n8henrie/icwasm"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
