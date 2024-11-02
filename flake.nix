@@ -30,10 +30,12 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
+          CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUNNER = "wasm-bindgen-test-runner";
+          nativeBuildInputs = with pkgs; [
             cargo
             cargo-watch
             nodejs
+            wasm-bindgen-cli
             wasm-pack
           ];
           # shellHook = "";

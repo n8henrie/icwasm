@@ -22,13 +22,11 @@ rustPlatform.buildRustPackage {
   # https://github.com/cloud-hypervisor/rust-hypervisor-firmware/issues/249
   auditable = false;
 
-  buildInputs = [
-    wasm-pack
-  ];
   nativeBuildInputs = [
     binaryen
     llvmPackages.bintools
     wasm-bindgen-cli
+    wasm-pack
   ];
 
   configurePhase = ''
@@ -54,6 +52,7 @@ rustPlatform.buildRustPackage {
   nativeCheckInputs = [ nodejs ];
 
   checkPhase = ''
+    RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld" cargo test
     WASM_BINDGEN_TEST_ONLY_NODE=1 \
       CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUNNER=wasm-bindgen-test-runner \
       cargo test --target wasm32-unknown-unknown
