@@ -20,13 +20,6 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        pkgsWasm = import nixpkgs {
-          inherit system;
-          crossSystem = {
-            config = "wasm32-unknown-unknown";
-            rustc.config = "wasm32-unknown-unknown";
-          };
-        };
       in
       {
         devShells.default = pkgs.mkShell {
@@ -38,7 +31,6 @@
             wasm-bindgen-cli
             wasm-pack
           ];
-          # shellHook = "";
         };
 
         packages = {

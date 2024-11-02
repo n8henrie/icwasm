@@ -13,10 +13,7 @@ rustPlatform.buildRustPackage {
   cargoLock.lockFile = ./Cargo.lock;
   cargoBuildFeatures = [ "console_error_panic_hook" ];
 
-  RUSTFLAGS = [
-    "-C"
-    "linker=lld"
-  ];
+  RUSTFLAGS = [ "-Clinker=lld" ];
 
   # lld: error: unknown argument '-Wl,--undefined=AUDITABLE_VERSION_INFO'
   # https://github.com/cloud-hypervisor/rust-hypervisor-firmware/issues/249
